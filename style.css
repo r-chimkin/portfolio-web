@@ -1,0 +1,400 @@
+/* Define the fade-in sequence */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+nav {
+  display: flex; /* Lines up the links in a row */
+  gap: 50px;     /* Adds spacing between each link */
+  justify-content: center;
+  padding-top: 20px;
+  font-family:sans-serif;
+}
+
+body {
+  background-color: antiquewhite;
+  overflow-x: hidden; /* Prevents horizontal scrollbars when photo slides out */
+}
+
+/* Style your nav links with a transition */
+nav a {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;
+  margin-right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Make links pop on hover */
+nav a:hover {
+  color: brown;
+}
+
+/* Animate the heading on page load */
+h1, h2 {
+  animation: fadeInUp 1s ease-out forwards;
+  padding-left: 30px;
+}
+h1 {
+  font-size: 80px;
+  margin-bottom: 0;
+}
+
+.greet {
+  display: flex;
+  flex-direction: column;   /* Stacks elements top-to-bottom */
+  justify-content: center; /* Centers vertically */
+  min-height: 100vh;       /* Takes up 100% of the viewport height */
+}
+
+.by {
+  font-size: 60px;
+  color: brown;
+  margin-top: -50px;
+  display: block;
+  text-align: right;     /* Aligns text to the right side */
+  padding-right:920px;   /* Keeps a small gap from the far right edge */
+}
+
+.welcome {
+  font-size: 100px;
+}
+
+.name {
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 90px;
+  margin-top: 10px;
+   color: brown;
+}
+
+/* ==========================================
+   TURNTABLE & VINYL SETUP
+   ========================================== */
+
+/* Vinyl Container on the right */
+.turntable {
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  cursor: pointer;
+}
+
+/* Profile Picture: Placed directly behind the vinyl */
+#my-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;  /* Sized nicely relative to 600px record */
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 1; /* Layer 1 (BEHIND vinyl) */
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Vinyl Disk Design */
+.vinyl-record {
+  animation: fadeInLeft 1s ease-out forwards;
+  width: 600px;
+  height: 600px;
+  background: repeating-radial-gradient(
+    circle,
+    #111 0px,
+    #111 2px,
+    #222 3px,
+    #222 4px
+  );
+  border-radius: 50%;
+  position: relative;
+  z-index: 2; /* Layer 2 (IN FRONT of photo) */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Center Label */
+.record-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: brown;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+/* Spin Animation Class */
+.spinning {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slide out photo to the left when hovered or active */
+.turntable:hover #my-photo,
+.turntable.active #my-photo {
+  transform: translate(-130%, -50%); /* Slide out to left */
+}
+
+/* ==========================================
+   2. SUBTLE FLOATING BACKGROUND ELEMENTS
+   ========================================== */
+
+.floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Allows clicking through elements */
+  z-index: 0;           /* Behind text and turntable */
+  overflow: hidden;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.6;
+  animation: floatUp 8s ease-in-out infinite;
+}
+
+/* Position each item across the screen with different timings */
+.float-item:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 20px; }
+.float-item:nth-child(2) { left: 25%; animation-delay: 2s; font-size: 28px; }
+.float-item:nth-child(3) { left: 45%; animation-delay: 4s; font-size: 18px; }
+.float-item:nth-child(4) { left: 65%; animation-delay: 1s; font-size: 22px; }
+.float-item:nth-child(5) { left: 85%; animation-delay: 3s; font-size: 26px; }
+
+/* Floating animation keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Smooth fade transitions for messages */
+.message {
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.active-msg {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hidden-msg {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Shifts text left to make room when vinyl is hovered or playing */
+.turntable:hover ~ .greet #initial-msg,
+.turntable.active ~ .greet #initial-msg {
+  transform: translateX(-150px);
+}
+
+/* Create space so the page can scroll down */
+body {
+  min-height: 200vh; /* Gives the page scrollable depth */
+}
+
+h3 {
+  font-size: 120px;
+  display: block;
+  margin: 0;               /* Clears default margins */
+ padding-left: 30px;
+}
+h3 {
+  line-height: 0.9;   /* Removes bottom margin to close the gap */
+}
+
+/* Container alignment inside the red background */
+.overview2, .profile {
+  position: relative;
+  z-index: 2;
+  margin-left: 700px;           /* Aligns within red section */
+  color: #f7f3ed;               /* Soft off-white for clean contrast */
+  font-family: sans-serif;       /* Clean, modern typeface */
+  text-align: left;             /* Left-aligned text looks more editorial */
+  max-width: 520px;
+  
+}
+
+/* Top description text */
+.overview2 {
+  font-size: 20px;
+  font-weight: 300;             /* Light font weight */
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  margin-top: 140px;
+  margin-bottom: 50px;
+  opacity: 0.85;                /* Subtle muted tone */
+}
+
+/* Quick Profile section */
+.profile {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 2.2;
+  letter-spacing: 0.5px;
+  border-top: 1px solid rgba(247, 243, 237, 0.25); /* Ultra-thin minimalist divider */
+  padding-top: 30px;
+}
+.profile h3 {
+  font-size: 28px;        /* Brings title back down to scale */
+  line-height: 1.2;       /* Keeps 'Quick' and 'Profile' close together */
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Makes labels bright white and bold */
+.profile strong {
+  color: #ffffff;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* Keeps paragraph lines neat and spaced out */
+.profile p {
+  margin: 8px 0;
+  color: #f7f3ed;
+}
+
+/* Pseudo-element acting as the background image container sitting below the fold */
+body::after {
+  content: "";
+  position: absolute;
+  top: 100vh; /* Starts right below the first page view */
+  left: 0;
+  width: 100vw;
+  height: 102vh;
+  background-color: brown;
+  margin-left: 590px;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  
+  /* Scroll-driven reveal animation */
+  animation: bgScrollReveal linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@keyframes bgScrollReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(20% 0 20% 0); /* Clips top and bottom */
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);      /* Fully expands */
+  }
+}
+/* Scroll-driven animation for "about me" headings */
+.overview, .cas {
+  animation: textScrollReveal linear forwards;
+  animation-timeline: view();
+  animation-range: entry 10% cover 40%;
+}
+
+/* Keyframes for h3 and h4 text animation */
+@keyframes textScrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* Keeps the container positioned independently */
+.cas {
+  position: absolute;
+  top: 135vh;            /* Vertical placement right under the Overview title */
+  left: 30px;            /* Horizontal alignment on the beige side */
+  z-index: 2;            /* Keeps it visible above background elements */
+  width: 260px;          /* Restricts box width */
+}
+
+/* Image scaling */
+#castle {
+  width: 200%;           /* Fills the .cas container width */
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+
+
+/* Step 2: Glowing Blurred Aura Circle */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the aura on screen */
+  width: 1000px;                     /* Size of the aura core */
+  height: 500px;
+  background-color: #f4b083;        /* Aura Center Color (e.g., Hot Pink) */
+  border-radius: 50%;               /* Turns the square into a circle */
+  filter: blur(120px);              /* Gaussian blur effect */
+  opacity: 0.65;                    /* Softens glow intensity */
+  z-index: -1;                      /* Keeps aura behind all page content */
+  pointer-events: none;             /* Prevents click interference */
+}

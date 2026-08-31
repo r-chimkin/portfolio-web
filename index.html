@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elviah's Portfolio</title>
+    <link rel="stylesheet" href="style.css">  <!-- to link on style.css  -->
+</head>
+<body>
+     <nav>               <!-- to link for navigations -->
+    <a href="index.html">Home</a> 
+    <a href="quiz.html">Quiz</a>
+    <a href="activity.html">Activity</a>
+    <a href="exam.html">Exam</a>
+  </nav>
+
+<div class="greet">
+  <!-- Default message before clicking vinyl -->
+  <div id="initial-msg" class="message active-msg">
+    <h1><span class="welcome">Welcome </span>to my portfolio </h1>
+    <h2><span class= "by"><em>by Elviah</em></span></h2>
+  </div>
+
+  <!-- Message shown after clicking vinyl -->
+  <div id="intro-msg" class="message hidden-msg">
+    <h1>Hello, <span class="name">my name is</span></h1>
+    <h2><em><b>Elviah Angela D. Cunanan</b></em></h2>
+  </div>
+</div>
+
+ <script src="script.js"></script> <!-- to link on script.js  -->
+ <!-- Vinyl Record Player Container -->
+<!-- Vinyl Record Player Container -->
+<div class="turntable" id="vinyl-player">
+  
+  <!-- 1. Your profile picture (starts hidden behind the record) -->
+  <img id="my-photo" src="./assets/me.jpg" alt="Elviah Angela D. Cunanan">
+
+  <!-- 2. The vinyl record disk -->
+  <div class="vinyl-record">
+    <div class="record-label">🎵</div>
+  </div>
+
+</div>
+
+<!-- Audio element -->
+<audio id="portfolio-song" src="moving-castle.mp3" loop></audio>
+
+<!-- Floating Background Elements -->
+<div class="floating-container">
+  <span class="float-item">✨</span>
+  <span class="float-item">🌸</span>
+  <span class="float-item">✦</span>
+  <span class="float-item">🎵</span>
+  <span class="float-item">✨</span>
+</div>
+<div class="overview">
+  <h3>Overview </h3>
+</div>
+
+
+
+<div class="overview2">
+  <p>A compilation of my quizzes, activities, and examination records for this course.</p>
+</div>
+
+<div class="profile">
+  <h3>Quick Profile</h3>
+  <p><strong>Name:</strong> Elviah Angela D. Cunanan</p>
+  <p><strong>Course & Section:</strong> BSCS-3B</p>
+  <p><strong>Student No.:</strong> 202410562</p>
+  <p><strong>Subject:</strong> DCIT 26: Application Development and Emerging Technologies</p>
+</div>
+</body>
+
+ <div class="cas">
+    <img id="castle" src="assets/castle.png" alt="moving-castle">
+</div>
+</html>

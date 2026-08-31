@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Elviah's Portfolio</title>
+    <link rel="stylesheet" href="quiz.css">  <!-- to link on style.css  -->
+</head>
+<body data-page="quiz">
+     <nav>               <!-- to link for navigations -->
+    <a href="index.html">Home</a> 
+    <a href="quiz.html">Quiz</a>
+    <a href="activity.html">Activity</a>
+    <a href="exam.html">Exam</a>
+  </nav>
+        
+
+  <div class="floating-container">
+  <span class="float-item">✨</span>
+  <span class="float-item">🌸</span>
+  <span class="float-item">✦</span>
+  <span class="float-item">🎵</span>
+  <span class="float-item">✨</span>
+</div>
+<!-- Simple Selector Container -->
+<div class="simple-select">
+  <button class="arrow-btn left-arrow" id="prevBtn">&#10094;</button>
+
+  <div class="display-item">
+    <div class="img-wrapper">
+      <img id="quiz-image" src="./assets/quiz-1.jpg" alt="Quiz Preview">
+    </div>
+    
+    <div class="item-info">
+      <div class="title-row">
+        <h2 id="quiz-badge">QUIZ 1</h2>
+        <span id="quiz-score" class="score-badge">Score: 20/20</span>
+      </div>
+      <p id="quiz-date">August 25, 2026</p>
+      <span id="quiz-counter" class="counter">1 of 5</span>
+    </div>
+  </div>
+
+  <button class="arrow-btn right-arrow" id="nextBtn">&#10095;</button>
+</div>
+
+<!-- Audio Tag & Script -->
+<audio id="portfolio-song" src="moving-castle.mp3" loop></audio>
+<script src="item-select.js"></script>
+<script src="audio-player.js"></script>
+
+</body>
+
+
+
+</html>

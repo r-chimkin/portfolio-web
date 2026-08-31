@@ -1,0 +1,177 @@
+nav {
+  display: flex; /* Lines up the links in a row */
+  gap: 50px;     /* Adds spacing between each link */
+  justify-content: center;
+  padding-top: 20px;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: antiquewhite;
+  overflow-x: hidden; /* Prevents horizontal scrollbars when photo slides out */
+}
+
+/* Style your nav links with a transition */
+nav a {
+  display: inline-block;
+  color: #333;
+  text-decoration: none;
+  margin-right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Make links pop on hover */
+nav a:hover {
+  color: brown;
+}
+.floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Allows clicking through elements */
+  z-index: 0;           /* Behind text and turntable */
+  overflow: hidden;
+}
+
+.float-item {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0.6;
+  animation: floatUp 8s ease-in-out infinite;
+}
+
+/* Position each item across the screen with different timings */
+.float-item:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 20px; }
+.float-item:nth-child(2) { left: 25%; animation-delay: 2s; font-size: 28px; }
+.float-item:nth-child(3) { left: 45%; animation-delay: 4s; font-size: 18px; }
+.float-item:nth-child(4) { left: 65%; animation-delay: 1s; font-size: 22px; }
+.float-item:nth-child(5) { left: 85%; animation-delay: 3s; font-size: 26px; }
+
+/* Floating animation keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.simple-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 20px;
+  flex-wrap: wrap; /* lets it wrap instead of overflowing on small screens */
+}
+/* Arrow Buttons */
+.arrow-btn {
+  background: transparent;
+  color: brown;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  position: relative;
+  z-index: 999; 
+  pointer-events: auto;
+}
+
+.arrow-btn:hover {
+  color: #333;
+  transform: scale(1.2);
+}
+
+/* Display Wrapper */
+.display-item {
+  text-align: center;
+}
+
+.img-wrapper {
+  width: 450px;
+  height: 250px;
+}
+
+.img-wrapper img {
+    padding-top: 100px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.2s ease;
+}
+
+/* Info Section Formatting */
+.item-info {
+  margin-top: 490px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#quiz-badge {
+  font-size: 32px;
+  color: brown;
+  margin: 0;
+  font-weight: bold;
+}
+
+.score-badge {
+  background-color: brown;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+
+#quiz-date {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+.counter {
+  font-size: 13px;
+  color: brown;
+  font-weight: 600;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+
+/* Step 2: Glowing Blurred Aura Circle */
+body::before {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the aura on screen */
+  width: 1000px;                     /* Size of the aura core */
+  height: 500px;
+  background-color: #f4b083;        /* Aura Center Color (e.g., Hot Pink) */
+  border-radius: 50%;               /* Turns the square into a circle */
+  filter: blur(120px);              /* Gaussian blur effect */
+  opacity: 0.65;                    /* Softens glow intensity */
+  z-index: -1;                      /* Keeps aura behind all page content */
+  pointer-events: none;             /* Prevents click interference */
+}
