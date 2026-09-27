@@ -43,7 +43,7 @@ h1, h2 {
   padding-left: 30px;
 }
 h1 {
-  font-size: 80px;
+  font-size: clamp(32px, 9vw, 80px);
   margin-bottom: 0;
 }
 
@@ -55,24 +55,24 @@ h1 {
 }
 
 .by {
-  font-size: 60px;
+  font-size: clamp(24px, 6vw, 60px);
   color: brown;
   margin-top: -50px;
   display: block;
   text-align: right;     /* Aligns text to the right side */
-  padding-right:920px;   /* Keeps a small gap from the far right edge */
+  padding-right: clamp(20px, 48vw, 920px);   /* Keeps a small gap from the far right edge, scales with viewport */
 }
 
 .welcome {
-  font-size: 100px;
+  font-size: clamp(40px, 11vw, 100px);
 }
 
 .name {
-  font-size: 50px;
+  font-size: clamp(22px, 6vw, 50px);
 }
 
 h2 {
-  font-size: 90px;
+  font-size: clamp(36px, 10vw, 90px);
   margin-top: 10px;
    color: brown;
 }
@@ -249,7 +249,7 @@ body {
 }
 
 h3 {
-  font-size: 120px;
+  font-size: clamp(44px, 13vw, 120px);
   display: block;
   margin: 0;               /* Clears default margins */
  padding-left: 30px;
@@ -397,4 +397,155 @@ body::before {
   opacity: 0.65;                    /* Softens glow intensity */
   z-index: -1;                      /* Keeps aura behind all page content */
   pointer-events: none;             /* Prevents click interference */
+}
+/* ==========================================
+   RESPONSIVE / MOBILE ADAPTATIONS
+   (desktop rules above are untouched — these
+   only kick in on narrower screens)
+   ========================================== */
+
+@media (max-width: 900px) {
+
+  /* Turntable: was a fixed 600px block pinned off the right edge.
+     Bring it into the flow, centered, and scaled down so it
+     doesn't get clipped or overlap the text on phones. */
+  .turntable {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: min(70vw, 320px);
+    height: min(70vw, 320px);
+    margin: 20px auto 50px;
+  }
+
+  /* .turntable sits right before the "Overview" heading in the
+     HTML; give the heading its own top space too so spacing
+     holds even if the vinyl's size/margins change later. */
+  .overview {
+    margin-top: 30px;
+    padding-top: 10px;
+  }
+
+  #my-photo {
+    width: 85%;
+    height: 85%;
+  }
+
+  .vinyl-record {
+    width: 100%;
+    height: 100%;
+  }
+
+  .record-label {
+    width: 33%;
+    height: 33%;
+    font-size: 14px;
+  }
+
+  .turntable:hover #my-photo,
+  .turntable.active #my-photo {
+    transform: translate(-115%, -50%);
+  }
+
+  .turntable:hover ~ .greet #initial-msg,
+  .turntable.active ~ .greet #initial-msg {
+    transform: none;
+  }
+
+  .greet {
+    text-align: center;
+  }
+
+  h1, h2 {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+  }
+
+  .by {
+    text-align: center;
+    padding-right: 16px;
+  }
+
+  /* Overview / Quick Profile block: was pinned 700px from the
+     left assuming a wide desktop canvas. Let it use the full
+     width and stack naturally on phones. */
+  .overview2, .profile {
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: calc(100% - 40px);
+  }
+
+  body::after {
+    margin-left: 0;
+    width: 100vw;
+  }
+
+  /* Castle image: was absolutely offset assuming lots of side
+     room. Keep it in flow and cap its width so it never causes
+     horizontal scrolling. */
+  .cas {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 90%;
+    max-width: 260px;
+    margin: 20px auto;
+  }
+
+  #castle {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .turntable {
+    width: min(75vw, 260px);
+    height: min(75vw, 260px);
+  }
+}
+nav {
+  display: flex;
+  gap: 45px;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 20px;
+  font-family: sans-serif;
+  position: relative;
+  z-index: 50;
+  /* no background — lets the page's warm glow show through */
+}
+
+nav a {
+  position: relative;
+  display: inline-block;
+  color: #6b4226; /* warm espresso brown, softer than black */
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 2px;
+  transition: color 0.3s ease;
+}
+
+/* Thin underline that grows in on hover */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: brown;
+  transition: width 0.35s ease;
+}
+
+nav a:hover {
+  color: brown;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
