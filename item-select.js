@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const quizData = [
     { badge: "QUIZ 1", score: "Score: 20/20", date: "August 25, 2026", type: "image", images: ["./assets/quiz-1.jpg"] },
-    { badge: "QUIZ 2", score: "Score: 19/20", date: "MM/DD/YY", type: "image", images: ["quiz2.png"] },
-    { badge: "QUIZ 3", score: "Score: 20/20", date: "MM/DD/YY", type: "image", images: ["quiz3.png"] }
+    { badge: "QUIZ 2", score: "Score: 20/20", date: "September 5, 2026", type: "image", images: ["./assets/QUIZ2.png"] },
+    { badge: "QUIZ 3", score: "Score: 20/20", date: "September 5, 2026", type: "image", images: ["./assets/Quiz3.png"] },
+     { badge: "LONG QUIZ", score: "Score: 44/45", date: "September 5, 2026", type: "image", images: ["./assets/Longquiz.png"] }
   ];
 
   // Activities now use PDFs instead of images
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ];
 
   const examData = [
-    { badge: "EXAM 1", score: "Score: ", date: "MM/DD/YY", type: "image", images: ["exam1.png"] },
+    { badge: "EXAM 1", score: "Score: 70/70", date: "September 8, 2026", type: "image", images: ["./assets/EXAM1.jpg"] },
     { badge: "EXAM 2", score: "Score: ", date: "MM/DD/YY", type: "image", images: ["exam2.png"] }
   ];
 
